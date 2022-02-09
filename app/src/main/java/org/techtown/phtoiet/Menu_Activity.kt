@@ -1,0 +1,55 @@
+package org.techtown.phtoiet
+
+import android.content.Intent
+import android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import com.kakao.sdk.user.UserApiClient
+
+class Menu_Activity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_menu)
+
+        val nickname = findViewById<TextView>(R.id.nickname)//닉네임
+
+        UserApiClient.instance.me { user, error ->
+            "닉네임: ${user?.kakaoAccount?.profile?.nickname}".also { nickname.text = it }
+        }//카카오에서 닉네임 불러오기
+
+        val kakao_logout_button = findViewById<Button>(R.id.logout_button) // 로그인 버튼
+
+        kakao_logout_button.setOnClickListener {
+            UserApiClient.instance.logout { error ->
+                if (error != null) {
+                    Toast.makeText(this, "로그아웃 실패 $error", Toast.LENGTH_SHORT).show()
+                }else {
+                    Toast.makeText(this, "로그아웃 성공", Toast.LENGTH_SHORT).show()
+                }
+                val intent = Intent(this, MainActivity::class.java)
+                startActivity(intent.addFlags(FLAG_ACTIVITY_CLEAR_TOP))
+                finish()
+            }
+        }
+
+        val kakao_unlink_button = findViewById<Button>(R.id.out_button) // 로그인 버튼
+
+        kakao_unlink_button.setOnClickListener {
+            UserApiClient.instance.unlink { error ->
+                if (error != null) {
+                    Toast.makeText(this, "회원 탈퇴 실패 $error", Toast.LENGTH_SHORT).show()
+                }else {
+                    Toast.makeText(this, "회원 탈퇴 성공", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent.addFlags(FLAG_ACTIVITY_CLEAR_TOP))
+                    finish()
+                }
+            }
+        }
+
+
+    }
+}
