@@ -20,6 +20,8 @@ class Menu_Activity : AppCompatActivity() {
             "닉네임: ${user?.kakaoAccount?.profile?.nickname}".also { nickname.text = it }
         }//카카오에서 닉네임 불러오기
 
+
+        /*
         val kakao_logout_button = findViewById<Button>(R.id.logout_button) // 로그인 버튼
 
         kakao_logout_button.setOnClickListener {
@@ -49,7 +51,7 @@ class Menu_Activity : AppCompatActivity() {
                 }
             }
         }
-
+        */
 
     }
 }
