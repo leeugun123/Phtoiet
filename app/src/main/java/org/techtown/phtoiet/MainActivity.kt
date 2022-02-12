@@ -29,13 +29,13 @@ class MainActivity : AppCompatActivity() {
 
             if(error != null){
                 Toast.makeText(this,"토큰 정보 보기 실패",Toast.LENGTH_SHORT).show()
-            }
+            }//처음 로그인 한 경우,
             else if(tokenInfo != null){
                 Toast.makeText(this,"토큰 정보 보기 성공",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this,Menu_Activity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
-            }
+            }//이미 기존 계정으로 로그인 했을 경우,
         }
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->

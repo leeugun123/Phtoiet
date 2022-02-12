@@ -15,7 +15,7 @@
         android:theme="@style/Theme.Phtoiet">
         <activity
             android:name=".Menu_Activity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
