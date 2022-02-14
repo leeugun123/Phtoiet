@@ -28,10 +28,10 @@ class MainActivity : AppCompatActivity() {
         UserApiClient.instance.accessTokenInfo{ tokenInfo, error ->
 
             if(error != null){
-                Toast.makeText(this,"토큰 정보 보기 실패",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this,"카카오 로그인 정보 보기 실패",Toast.LENGTH_SHORT).show()
             }//처음 로그인 한 경우,
             else if(tokenInfo != null){
-                Toast.makeText(this,"토큰 정보 보기 성공",Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this,"토큰 정보 보기 성공",Toast.LENGTH_SHORT).show()
                 val intent = Intent(this,Menu_Activity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
@@ -71,7 +71,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             else if (token != null) {
-                Toast.makeText(this, "로그인에 성공하였습니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "로그인에 성공", Toast.LENGTH_SHORT).show()
                 val intent = Intent(this, Menu_Activity::class.java)
                 startActivity(intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                 finish()
@@ -84,12 +84,12 @@ class MainActivity : AppCompatActivity() {
         kakao_login_button.setOnClickListener {
             if(LoginClient.instance.isKakaoTalkLoginAvailable(this)){
                 LoginClient.instance.loginWithKakaoTalk(this, callback = callback)
-
-
             }else{
                 LoginClient.instance.loginWithKakaoAccount(this, callback = callback)
             }
         }
+
+
 
 
     }
