@@ -19,6 +19,7 @@ import java.security.Key
 import java.security.MessageDigest
 
 class MainActivity : AppCompatActivity() {
+
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -69,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                         Toast.makeText(this, "기타 에러", Toast.LENGTH_SHORT).show()
                     }
                 }
+
             }
             else if (token != null) {
                 Toast.makeText(this, "로그인에 성공", Toast.LENGTH_SHORT).show()

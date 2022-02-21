@@ -34,22 +34,24 @@ class Menu_Activity : AppCompatActivity() {
 
         val Today_button = findViewById<Button>(R.id.button1)
         Today_button.setOnClickListener{
-            setFragment1()
+            Today_Fragment()
         }
 
         val Plus_button = findViewById<Button>(R.id.button2)
         Plus_button.setOnClickListener{
-            setFragment2()
+            Plus_fragment()
         }
+
+
 
     }
 
-    fun setFragment1(){
+    fun Today_Fragment(){
         val transaction = supportFragmentManager.beginTransaction()
             .replace(frame,Today_fragment()).commit()
     }//오늘의 식단정보를 알려주는 메소드
 
-    fun setFragment2(){
+    fun Plus_fragment(){
         val transaction = supportFragmentManager.beginTransaction()
             .replace(frame,Plus_Fragment()).commit()
     }

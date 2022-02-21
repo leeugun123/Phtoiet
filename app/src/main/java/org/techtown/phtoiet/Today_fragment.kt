@@ -21,7 +21,6 @@ class Today_fragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        
         val view = inflater.inflate(R.layout.fragment_today_fragment,null)
         return view
     }
@@ -30,11 +29,6 @@ class Today_fragment : Fragment() {
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        val current = LocalDateTime.now()
-        val formatter = DateTimeFormatter.ISO_DATE
-        val formatted = current.format(formatter)
-        Today_date.setText(formatted)
 
 
 
