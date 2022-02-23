@@ -26,10 +26,10 @@ class Plus_Fragment : Fragment() {
 
         val rootView = inflater.inflate(R.layout.fragment_plus_, container, false)
 
-        val foodList = arrayListOf(
-            Profiles(R.drawable.noddle,"짜장면",803.4,"12시 30분"),
-            Profiles(R.drawable.cutlet,"돈가스",560.3,"13시 20분")
-        )
+        var foodList = ArrayList<Profiles>()
+        foodList.add(Profiles(R.drawable.noddle,"짜장면",803.4,"12시 30분"))
+        foodList.add(Profiles(R.drawable.cutlet,"돈가스",560.3,"13시 20분"))
+
 
         recyclerView = rootView.findViewById(R.id.list)as RecyclerView
         recyclerView.layoutManager =

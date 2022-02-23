@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "124184554039",
+    "project_id": "toiet-7f60d",
+    "storage_bucket": "toiet-7f60d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:124184554039:android:d0294d59732df1930cedb2",
+        "android_client_info": {
+          "package_name": "org.techtown.phtoiet"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "124184554039-dsio2pm77c93ang5hll0nnose44ikeec.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.techtown.phtoiet",
+            "certificate_hash": "24587da6b04715037368fd46081390c9be99c8be"
+          }
+        },
+        {
+          "client_id": "124184554039-3i8ba6slfqd0bgmdg82nrmpiengvlrrl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBf6B6xgmlqYgHWfndn5WrYQze81Vjq7d4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "124184554039-3i8ba6slfqd0bgmdg82nrmpiengvlrrl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
