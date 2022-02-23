@@ -52,10 +52,8 @@
     <FrameLayout
         android:id="@+id/frame"
         android:layout_width="match_parent"
-        android:layout_height="820dp"
+        android:layout_height="840dp"
         />
-
-
 
     <LinearLayout
         android:id="@+id/LinearLayout"

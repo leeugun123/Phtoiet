@@ -1,33 +1,44 @@
 package org.techtown.phtoiet
 
-import android.app.Activity
-import android.content.pm.PackageManager
-import android.os.Build
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import android.widget.Toast
-import androidx.annotation.RequiresApi
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.fragment_plus_.*
-import kotlinx.android.synthetic.main.fragment_today_fragment.*
-import org.techtown.phtoiet.databinding.ActivityMainBinding
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
-import java.util.jar.Manifest
 
 class Plus_Fragment : Fragment() {
+
+    lateinit var recyclerView: RecyclerView
+    lateinit var mainActivity: MainActivity
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if(context is MainActivity) mainActivity = context
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
-        val view = inflater.inflate(R.layout.fragment_plus_, container, false)
-        return view
+        val rootView = inflater.inflate(R.layout.fragment_plus_, container, false)
 
+        val foodList = arrayListOf(
+            Profiles(R.drawable.noddle,"짜장면",803.4,"12시 30분"),
+            Profiles(R.drawable.cutlet,"돈가스",560.3,"13시 20분")
+        )
+
+        recyclerView = rootView.findViewById(R.id.list)as RecyclerView
+        recyclerView.layoutManager =
+            LinearLayoutManager(requireContext())
+        recyclerView.adapter =
+            ProfileAdapter(requireContext(),foodList)
+
+
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -37,13 +48,7 @@ class Plus_Fragment : Fragment() {
 
         }
 
-
     }
-
-
-
-
-
 
 
 }
