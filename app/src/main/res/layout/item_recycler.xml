@@ -9,11 +9,13 @@
     android:orientation="vertical"
    >
 
-    <ImageView
+    <TextView
         android:id="@+id/food_picture"
         android:layout_width="370dp"
         android:layout_height="300dp"
         android:src="@color/black"
+        android:textStyle="bold"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
