@@ -1,5 +1,6 @@
 package org.techtown.phtoiet
 
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -18,18 +19,9 @@ import org.techtown.phtoiet.databinding.ActivityMainBinding
 
 class Plus_Fragment : Fragment() {
 
-
-    private lateinit var binding: ActivityMainBinding
-    lateinit var recyclerView: RecyclerView
-    lateinit var mainActivity: MainActivity
-    //private lateinit var binding : ActivityMainBinding
-
-    val db = Firebase.firestore
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if(context is MainActivity) mainActivity = context
-    }
+    val db = FirebaseFirestore.getInstance()
+    val itemList = arrayListOf<Profiles>()
+    val adapter = ProfileAdapter(itemList)
 
 override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
@@ -41,42 +33,22 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        list.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        list.adapter = adapter
 
-        var foodList = ArrayList<Profiles>()//food의 ArrayList
-
-        foodList.add(Profiles("eeeee","짜장면","803.4","12시 30분"))
-        foodList.add(Profiles("eeeeee","돈가스","800.3","13시 20분"))
-
-
-        recyclerView = getView()?.findViewById(R.id.list) as RecyclerView
-        recyclerView.layoutManager =
-            LinearLayoutManager(requireContext())
-
-
-
-        db.collection("Contacts")//작업할 컬렉션
-            .get()  //문서 가져오기
-            .addOnSuccessListener {result ->
-                //성공할경우
-
-                foodList.clear()
-                for(document in result){ val item = Profiles(document["calories"] as String,document["food_name"] as String,document["img"] as String, document["time"] as String)
-                    foodList.add(item)
-                    Log.d("TAG","여기까지 올려나???")
+        db.collection("Contacts")
+            .get()
+            .addOnSuccessListener { result->
+                itemList.clear()
+                for(document in result){
+                    val item = Profiles(document["Pictures"] as String,document["calories"] as String,document["food_name"] as String,document["time"] as String)
+                    itemList.add(item)
                 }
+                adapter.notifyDataSetChanged()
+            }
+            .addOnFailureListener{exception ->
 
             }
-            .addOnFailureListener{
-                //실패할경우
-
-                Toast.makeText(getActivity(),"Toast Message",Toast.LENGTH_SHORT).show()
-            }
-
-
-
-        recyclerView.adapter =
-            ProfileAdapter(requireContext(),foodList)
-
 
     }
 

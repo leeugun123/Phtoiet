@@ -12,7 +12,9 @@ import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 
-class ProfileAdapter(profileList1: Context, val profileList: ArrayList<Profiles>) : RecyclerView.Adapter<ProfileAdapter.FoodViewholder>(){
+class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapter<ProfileAdapter.FoodViewholder>(){
+
+    var result : ArrayList<Profiles> = arrayListOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAdapter.FoodViewholder {
