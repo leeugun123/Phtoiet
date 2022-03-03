@@ -41,7 +41,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             .addOnSuccessListener { result->
                 itemList.clear()
                 for(document in result){
-                    val item = Profiles(document["Pictures"] as String,document["calories"] as String,document["food_name"] as String,document["time"] as String)
+                    val item = Profiles(document["Pictures"] as String?,document["calories"] as String?,document["food_name"] as String?,document["time"] as String?)
                     itemList.add(item)
                 }
                 adapter.notifyDataSetChanged()
