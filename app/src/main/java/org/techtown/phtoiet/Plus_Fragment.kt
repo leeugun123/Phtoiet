@@ -1,5 +1,6 @@
 package org.techtown.phtoiet
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.content.Context
@@ -14,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.setPadding
+import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -22,6 +24,12 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.fragment_plus_.*
 import org.techtown.phtoiet.databinding.ActivityMainBinding
+import org.techtown.phtoiet.databinding.ActivityMainBinding.inflate
+import org.techtown.phtoiet.databinding.ActivityMenuBinding.inflate
+import org.techtown.phtoiet.databinding.DialogCustomBinding.inflate
+import org.techtown.phtoiet.databinding.FragmentTodayFragmentBinding.inflate
+import org.techtown.phtoiet.databinding.ItemRecyclerBinding.inflate
+import java.util.zip.Inflater
 
 class Plus_Fragment : Fragment() {
 
@@ -34,17 +42,19 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 
         val rootView = inflater.inflate(R.layout.fragment_plus_, container, false)
         return rootView
+
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //파이어베이스에서 정보를 가져와 recyclerView에 보여주기
 
-        Reading_Database()
+        Reading_Database()//초반 접속했을 경우 데이터베이스 읽기
+
 
         floating.setOnClickListener {
             Writing_Database()
-            Reading_Database()
         }//추가를 눌렀을 경우,
     }
 
@@ -72,69 +82,29 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             }
     }
 
+
+
+    @SuppressLint("WrongConstant")
     fun Writing_Database(){
 
-        val builder = AlertDialog.Builder(activity)
+        var builder = AlertDialog.Builder(activity)
 
-        val Pictures = TextView(activity)
-        Pictures.text = "음식사진"
 
-        val Calories = TextView(activity)
-        Calories.text = "음식 칼로리"
 
-        val Food_Name = TextView(activity)
-        Food_Name.text = "음식 이름"
 
-        val time = TextView(activity)
-        time.text = "시간"
+        db.collection("Contacts")
+            .add(data)
+            .addOnSuccessListener {
+                Toast.makeText(activity, "데이터가 추가되었습니다", Toast.LENGTH_LONG).show()
+                Reading_Database()
+            }
+            .addOnFailureListener{  exception ->
 
-        val et_Pictures = EditText(activity)
-        et_Pictures.isSingleLine = true
-        val et_Calories = EditText(activity)
-        et_Calories.isSingleLine = true
-        val et_Food_Name = EditText(activity)
-        et_Food_Name.isSingleLine = true
-        val et_time = EditText(activity)
-        et_time.isSingleLine = true
+            }
 
-        val mLayout = LinearLayout(activity)
-        // mLayout.orientation = LinearLayout.VERTICAL
-        mLayout.setPadding(16)
-        mLayout.addView(Pictures)
-        mLayout.addView(et_Pictures)
-        mLayout.addView(Calories)
-        mLayout.addView(et_Calories)
-        mLayout.addView(Food_Name)
-        mLayout.addView(et_Food_Name)
-        mLayout.addView(time)
-        mLayout.addView(et_time)
-
-        builder.setTitle("데이터 추가")
-        builder.setPositiveButton("추가"){dialog, which ->
-
-            val data = hashMapOf(
-                "Pictures" to et_Pictures.toString(),
-                "calories" to et_Calories.toString(),
-                "food_name" to et_Food_Name.toString(),
-                "time" to et_time.toString()
-            )
-
-            db.collection("Contacts")
-                .add(data)
-                .addOnSuccessListener {
-                    Toast.makeText(activity, "데이터가 추가되었습니다", Toast.LENGTH_LONG).show()
-                    Reading_Database()
-                }
-                .addOnFailureListener{  exception ->
-
-                }
-
-        }
-        builder.setNegativeButton("취소"){dialog,which->
-
-        }
-        builder.show()
     }
 
 
 }
+
+
