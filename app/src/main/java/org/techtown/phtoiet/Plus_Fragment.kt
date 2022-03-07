@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -22,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_menu.*
+import kotlinx.android.synthetic.main.dialog_custom.*
 import kotlinx.android.synthetic.main.fragment_plus_.*
 import org.techtown.phtoiet.databinding.ActivityMainBinding
 import org.techtown.phtoiet.databinding.ActivityMainBinding.inflate
@@ -80,27 +82,44 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             .addOnFailureListener { exception ->
 
             }
-    }
-
-
+    }//데이터 읽어오기
 
     @SuppressLint("WrongConstant")
     fun Writing_Database(){
 
         var builder = AlertDialog.Builder(activity)
 
+        builder.setTitle("식단 입력")
+        builder.setIcon(R.mipmap.ic_launcher_round)
+
+        var v1 = layoutInflater.inflate(R.layout.dialog_custom,null)
+        builder.setView(v1)
+
+        builder.setPositiveButton("확인"){ dialog,which->
 
 
+            var edit1 : String? = food_picture.text.toString()
+            var edit2 : String? = food_name.text.toString()
+            var edit3 : String?= calories.text.toString()
+            var edit4 : String? = time.text.toString()
 
-        db.collection("Contacts")
-            .add(data)
-            .addOnSuccessListener {
-                Toast.makeText(activity, "데이터가 추가되었습니다", Toast.LENGTH_LONG).show()
-                Reading_Database()
-            }
-            .addOnFailureListener{  exception ->
+            var data = Profiles(edit1,edit2,edit3,edit4)
 
-            }
+            db.collection("Contacts")
+                .add(data)
+                .addOnSuccessListener {
+                    Toast.makeText(activity, "데이터가 추가되었습니다", Toast.LENGTH_LONG).show()
+                    Reading_Database()
+                }
+                .addOnFailureListener{  exception ->
+
+                }
+
+        }
+        builder.setNegativeButton("취소",null)
+        builder.show()
+
+
 
     }
 
