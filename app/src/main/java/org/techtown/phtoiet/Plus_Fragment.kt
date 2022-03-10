@@ -25,12 +25,7 @@ import com.google.firebase.ktx.Firebase
 import kotlinx.android.synthetic.main.activity_menu.*
 import kotlinx.android.synthetic.main.dialog_custom.*
 import kotlinx.android.synthetic.main.fragment_plus_.*
-import org.techtown.phtoiet.databinding.ActivityMainBinding
-import org.techtown.phtoiet.databinding.ActivityMainBinding.inflate
-import org.techtown.phtoiet.databinding.ActivityMenuBinding.inflate
-import org.techtown.phtoiet.databinding.DialogCustomBinding.inflate
-import org.techtown.phtoiet.databinding.FragmentTodayFragmentBinding.inflate
-import org.techtown.phtoiet.databinding.ItemRecyclerBinding.inflate
+
 import java.util.zip.Inflater
 
 class Plus_Fragment : Fragment() {
@@ -71,10 +66,10 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                 itemList.clear()
                 for (document in result) {
                     val item = Profiles(
-                        document["Pictures"] as String?,
-                        document["food_name"] as String?,
-                        document["calories"] as String?,
-                        document["time"] as String?
+                        document["Pictures"].toString() as String?,
+                        document["food_name"].toString() as String?,
+                        document["calories"].toString() as String?,
+                        document["time"].toString() as String?
                     )
                     itemList.add(item)
                 }
@@ -98,15 +93,19 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 
         builder.setPositiveButton("확인"){ dialog,which->
 
-            var data = hashMapOf(
-                "Pictures" to food_picture.text.toString(),
-                "food_name" to food_name.text.toString(),
-                "calories" to calories.text.toString(),
-                "time" to time.text.toString()
-            )
+            //Log.d("TAG","여기까지 올려나??")
+
+            var dialog = dialog as AlertDialog
+
+            val food_p : EditText? = dialog.findViewById<EditText>(R.id.food_picture)
+            val food_n : EditText? = dialog.findViewById<EditText>(R.id.food_name)
+            val food_c : EditText? = dialog.findViewById<EditText>(R.id.calories)
+            val food_t : EditText? = dialog.findViewById<EditText>(R.id.time)
+
+            var Profiles = Profiles("${food_p?.text}","${food_n?.text}","${food_c?.text}","${food_t?.text}")
 
             db.collection("Contacts")
-                .add(data)
+                .add(Profiles)
                 .addOnSuccessListener {
                     Toast.makeText(activity, "데이터가 추가되었습니다", Toast.LENGTH_LONG).show()
                     Reading_Database()
