@@ -61,6 +61,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
     }
 
     fun Reading_Database(){
+
         list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         list.adapter = adapter
 
@@ -71,8 +72,8 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                 for (document in result) {
                     val item = Profiles(
                         document["Pictures"] as String?,
-                        document["calories"] as String?,
                         document["food_name"] as String?,
+                        document["calories"] as String?,
                         document["time"] as String?
                     )
                     itemList.add(item)
@@ -97,13 +98,12 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 
         builder.setPositiveButton("확인"){ dialog,which->
 
-
-            var edit1 : String? = food_picture.text.toString()
-            var edit2 : String? = food_name.text.toString()
-            var edit3 : String?= calories.text.toString()
-            var edit4 : String? = time.text.toString()
-
-            var data = Profiles(edit1,edit2,edit3,edit4)
+            var data = hashMapOf(
+                "Pictures" to food_picture.text.toString(),
+                "food_name" to food_name.text.toString(),
+                "calories" to calories.text.toString(),
+                "time" to time.text.toString()
+            )
 
             db.collection("Contacts")
                 .add(data)
@@ -112,7 +112,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                     Reading_Database()
                 }
                 .addOnFailureListener{  exception ->
-
+                    Toast.makeText(activity, "데이터가 추가실패", Toast.LENGTH_LONG).show()
                 }
 
         }

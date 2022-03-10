@@ -4,69 +4,82 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <TextView
+    <LinearLayout
+        android:paddingTop="150dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="사진"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/food_picture"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="음식 사진"
-        />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="먹을 음식"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="사진"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
 
-   <EditText
-       android:id="@+id/food_name"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:hint="먹을 음식 입력"
-       />
+        <EditText
+            android:id="@+id/food_picture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="음식 사진"
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="예상 칼로리"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="먹을 음식"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
 
-    <EditText
-        android:id="@+id/calories"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="예상 칼로리 입력"
-        />
+        <EditText
+            android:id="@+id/food_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="먹을 음식 입력"
+            />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="먹은 시간"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="예상 칼로리"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
 
-    <EditText
-        android:id="@+id/time"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="먹은 시간 입력"
-        />
+        <EditText
+            android:id="@+id/calories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="예상 칼로리 입력"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="먹은 시간"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            />
+
+        <EditText
+            android:id="@+id/time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="먹은 시간 입력"
+            />
+
+
+
+
+    </LinearLayout>
+
 
 
 
