@@ -1,37 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <LinearLayout
-        android:paddingTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
 
-        <TextView
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="사진"
-            android:textSize="30sp"
-            android:textStyle="bold"
-            android:gravity="center"
-            />
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="뒤로가기"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                tools:ignore="MissingConstraints" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:gravity="center"
+                android:text="사진"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/open_gallery"
+                app:layout_constraintHorizontal_bias="0.494"
+                app:layout_constraintStart_toEndOf="@+id/back_button"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteY="3dp" />
+
+            <Button
+                android:id="@+id/open_gallery"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="버튼"
+                tools:ignore="MissingConstraints"
+                tools:layout_editor_absoluteX="324dp"
+                tools:layout_editor_absoluteY="3dp" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
         <EditText
             android:id="@+id/food_picture"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="350dp"
             android:hint="음식 사진"
             />
 
         <TextView
-            android:paddingTop="30dp"
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="먹을 음식"
+            android:text="먹은 음식"
             android:textSize="30sp"
             android:textStyle="bold"
             android:gravity="center"
@@ -45,7 +78,6 @@
             />
 
         <TextView
-            android:paddingTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="예상 칼로리"
@@ -62,7 +94,6 @@
             />
 
         <TextView
-            android:paddingTop="30dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="먹은 시간"
@@ -71,13 +102,21 @@
             android:gravity="center"
             />
 
+
         <EditText
             android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="먹은 시간 입력"
-            />
+            android:hint="먹은 시간 입력" />
 
+        <Button
+            android:id="@+id/save_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="저장"
+            android:textStyle="bold"
+            android:textSize="25sp"
+            />
 
 
 

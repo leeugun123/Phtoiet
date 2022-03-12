@@ -14,9 +14,6 @@ import androidx.recyclerview.widget.RecyclerView.Adapter
 
 class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapter<ProfileAdapter.FoodViewholder>(){
 
-    var result : ArrayList<Profiles> = arrayListOf()
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAdapter.FoodViewholder {
         //plug로 연결될 것들이 무엇인가?
         //붙이는 작업
@@ -26,20 +23,21 @@ class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapte
         return FoodViewholder(view)
     }
 
-    override fun getItemCount(): Int {
-        return profileList.size //profileList에 대한 갯수
-    }
+    override fun onBindViewHolder(holder: ProfileAdapter.FoodViewholder, position: Int) {
 
-    override fun onBindViewHolder(holder: FoodViewholder, position: Int) {
-
-        holder.Picture.text = profileList.get(position).Picture
+        holder.Picture.text = profileList.get(position).Food_Image
         holder.foodName.text = profileList.get(position).food_name
         holder.calories.text = profileList.get(position).calories
         holder.time.text = profileList.get(position).time
 
     }//모든 데이터들을 매치해주는 곳
 
-    class FoodViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    override fun getItemCount(): Int {
+        return profileList.size //profileList에 대한 갯수
+    }
+
+
+    inner class FoodViewholder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val Picture = itemView.findViewById<TextView>(R.id.food_picture) // 음식 사진
         val foodName = itemView.findViewById<TextView>(R.id.eat_food) //음식 종류

@@ -1,7 +1,9 @@
 package org.techtown.phtoiet
 
-class Profiles(val Picture : String? = null,
-               val food_name : String? = null,
-               val calories : String? = null,
-               val time : String? = null
+import android.graphics.drawable.Drawable
+
+class Profiles(val Food_Image: String?,
+               val food_name : String?,
+               val calories : String?,
+               val time : String?
 )
