@@ -12,7 +12,7 @@ import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.Adapter
 
-class ProfileAdapter(val profileList: ArrayList<Profiles>) : RecyclerView.Adapter<ProfileAdapter.FoodViewholder>(){
+class ProfileAdapter(val profileList: List<Profiles>) : RecyclerView.Adapter<ProfileAdapter.FoodViewholder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProfileAdapter.FoodViewholder {
         //plug로 연결될 것들이 무엇인가?

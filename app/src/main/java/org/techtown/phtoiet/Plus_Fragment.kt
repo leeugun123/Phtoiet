@@ -59,7 +59,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         super.onViewCreated(view, savedInstanceState)
         //파이어베이스에서 정보를 가져와 recyclerView에 보여주기
 
-        Reading_Database()//초반 접속했을 경우 데이터베이스 읽기
+        //Reading_Database()//초반 접속했을 경우 데이터베이스 읽기
 
         floating.setOnClickListener {
 
@@ -68,16 +68,21 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         }//추가를 눌렀을 경우,
     }
 
+    /*
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        //Fragment와 activity 정보 주고 받는 문제 해결하기
         // 돌려받은 resultCode가 정상인지 체크
         if(resultCode == Activity.RESULT_OK){
             Reading_Database()
             Toast.makeText(activity,"값이 변경되었습니다.",Toast.LENGTH_SHORT).show()
         }
     }
+    */
 
+
+    /*
     fun Reading_Database(){
 
         list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
@@ -89,7 +94,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                 itemList.clear()
                 for (document in result) {
                     val item = Profiles(
-                        document["food_picture"] as String?,
+                        document["food_picture"].toString() as String?,
                         document["food_name"].toString() as String?,
                         document["calories"].toString() as String?,
                         document["time"].toString() as String?
@@ -103,6 +108,8 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             }
     }//데이터 읽어오기
 
+
+     */
 
 }
 

@@ -38,16 +38,17 @@ class record_activity : AppCompatActivity() {
     @SuppressLint("WrongConstant")
     fun Writing_Database(){
 
-        val food_picture = EditText(this)
-        val food_name = EditText(this)
-        val calories = EditText(this)
-        val time = EditText(this)
+        //값이 입력 안됨 .. 형식적인 문제 한번 다시 고칠것
+        val food_picture = food_picture.getText().toString()
+        val food_name = food_name.getText().toString()
+        val calories = calories.getText().toString()
+        val time = time.getText().toString()
 
         val data = hashMapOf(
-            "food_picture" to food_picture.text.toString(),
-            "food_name" to food_name.text.toString(),
-            "calories" to calories.text.toString(),
-            "time" to time.text.toString()
+            "food_picture" to food_picture,
+            "food_name" to food_name,
+            "calories" to calories,
+            "time" to time
         )
 
         //일단 Firebase에 저장은 됨.
