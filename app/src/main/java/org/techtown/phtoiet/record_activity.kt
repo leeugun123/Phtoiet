@@ -13,7 +13,10 @@ import kotlinx.android.synthetic.main.dialog_custom.*
 
 class record_activity : AppCompatActivity() {
 
-    val db = FirebaseFirestore.getInstance()
+    var TAG = "record_activity"
+    var db : AppDatabase? = null
+    var Profiles_List = mutableListOf<Profiles>()
+    var adapter = ProfileAdapter(Profiles_List)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -29,36 +32,26 @@ class record_activity : AppCompatActivity() {
             val intent = Intent()
             setResult(Activity.RESULT_OK, intent)
             finish()
-        }//파이어베이스에 데이터 쓰기
-
+        }
 
     }
-
 
     @SuppressLint("WrongConstant")
     fun Writing_Database(){
 
         //값이 입력 안됨 .. 형식적인 문제 한번 다시 고칠것
-        val food_picture = food_picture.getText().toString()
-        val food_name = food_name.getText().toString()
-        val calories = calories.getText().toString()
-        val time = time.getText().toString()
+        val food_picture = Editext_food_picture.getText().toString()
+        val food_name = Editext_food_name.getText().toString()
+        val calories = Editext_calories.getText().toString()
+        val time = Editext_time.getText().toString()
 
-        val data = hashMapOf(
-            "food_picture" to food_picture,
-            "food_name" to food_name,
-            "calories" to calories,
-            "time" to time
-        )
-
-        //일단 Firebase에 저장은 됨.
-        db.collection("Contacts")
-            .add(data)
-            .addOnSuccessListener{
-                Toast.makeText(this,"값이 성공적으로 저장",Toast.LENGTH_LONG).show()
-            }
-            .addOnFailureListener{ exception ->
-                Toast.makeText(this,"실패",Toast.LENGTH_LONG).show()
-            }
+        val profiles = Profiles(0,food_picture,food_name,calories,time)
+        //Profiles 생성
+        db?.ProfilesDao()?.insertAll(profiles)
+        //DB에 추가
+        Profiles_List.add(profiles)
+         //리스트 추가
+        adapter.notifyDataSetChanged()
+        //리스트뷰 갱신
     }
 }

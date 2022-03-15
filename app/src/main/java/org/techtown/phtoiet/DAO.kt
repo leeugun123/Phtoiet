@@ -12,7 +12,7 @@ interface DAO {
     fun getAll(): List<Profiles>
 
     @Insert
-    fun insertAll(vararg contacts: Profiles)
+    fun insertAll(vararg profiles: Profiles)
 
     @Delete
     fun delete(profiles: Profiles)

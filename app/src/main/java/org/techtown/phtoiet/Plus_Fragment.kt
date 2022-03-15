@@ -43,73 +43,38 @@ import java.util.zip.Inflater
 
 class Plus_Fragment : Fragment() {
 
-    private val OPEN_GALLERY = 1
-    val db = FirebaseFirestore.getInstance()
-    val itemList = arrayListOf<Profiles>()
-    val adapter = ProfileAdapter(itemList)
+    var TAG = "Plus_Fragment"
+    var db : AppDatabase? = null
+    var Profiles_List = mutableListOf<Profiles>()
 
 override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
 
         val rootView = inflater.inflate(R.layout.fragment_plus_, container, false)
         return rootView
+
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //파이어베이스에서 정보를 가져와 recyclerView에 보여주기
 
-        //Reading_Database()//초반 접속했을 경우 데이터베이스 읽기
+        //DB 초기화 과정
+        db = activity?.let { AppDatabase.getInstance(it) }
+
+        //이전에 저장한 내용 모두 불러와서 추가하기
+        var savedProfiles = db!!.ProfilesDao().getAll()
+        if(savedProfiles.isNotEmpty()){
+            Profiles_List.addAll(savedProfiles)
+        }
+
 
         floating.setOnClickListener {
-
             val intent = Intent(activity,record_activity::class.java)
             startActivity(intent)
         }//추가를 눌렀을 경우,
+
+
     }
-
-    /*
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        //Fragment와 activity 정보 주고 받는 문제 해결하기
-        // 돌려받은 resultCode가 정상인지 체크
-        if(resultCode == Activity.RESULT_OK){
-            Reading_Database()
-            Toast.makeText(activity,"값이 변경되었습니다.",Toast.LENGTH_SHORT).show()
-        }
-    }
-    */
-
-
-    /*
-    fun Reading_Database(){
-
-        list.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
-        list.adapter = adapter
-
-        db.collection("Contacts")
-            .get()
-            .addOnSuccessListener { result ->
-                itemList.clear()
-                for (document in result) {
-                    val item = Profiles(
-                        document["food_picture"].toString() as String?,
-                        document["food_name"].toString() as String?,
-                        document["calories"].toString() as String?,
-                        document["time"].toString() as String?
-                    )
-                    itemList.add(item)
-                }
-                adapter.notifyDataSetChanged()
-            }
-            .addOnFailureListener { exception ->
-
-            }
-    }//데이터 읽어오기
-
-
-     */
 
 }
 
