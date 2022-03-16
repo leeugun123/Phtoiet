@@ -60,6 +60,7 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
 
         //DB 초기화 과정
         db = activity?.let { AppDatabase.getInstance(it) }
+        //여기가 문제인가??
 
         //이전에 저장한 내용 모두 불러와서 추가하기
         var savedProfiles = db!!.ProfilesDao().getAll()
@@ -67,12 +68,41 @@ override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
             Profiles_List.addAll(savedProfiles)
         }
 
-
+/*
         floating.setOnClickListener {
             val intent = Intent(activity,record_activity::class.java)
             startActivity(intent)
         }//추가를 눌렀을 경우,
 
+
+*/
+        var adapter = ProfileAdapter(Profiles_List)
+
+        floating.setOnClickListener{
+
+            val profiles = Profiles(0,"ddddd","dddddd","ddddd","dddddd")
+            //Profiles 생성
+            db?.ProfilesDao()?.insertAll(profiles)
+            //DB에 추가
+            Profiles_List.add(profiles)
+            //리스트 추가
+            adapter.notifyDataSetChanged()
+        }
+
+        /*
+        val food_picture = Editext_food_picture.getText().toString()
+        val food_name = Editext_food_name.getText().toString()
+        val calories = Editext_calories.getText().toString()
+        val time = Editext_time.getText().toString()
+
+        val profiles = Profiles(0,food_picture,food_name,calories,time)
+        //Profiles 생성
+        db?.ProfilesDao()?.insertAll(profiles)
+        //DB에 추가
+        Profiles_List.add(profiles)
+        //리스트 추가
+        adapter.notifyDataSetChanged()
+*/
 
     }
 

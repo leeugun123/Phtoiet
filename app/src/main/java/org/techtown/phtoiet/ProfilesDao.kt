@@ -1,13 +1,13 @@
 package org.techtown.phtoiet
 
-import androidx.lifecycle.LiveData
-import androidx.room.*
+import androidx.room.Dao
+import androidx.room.Delete
+import androidx.room.Insert
+import androidx.room.Query
 
 
-//데이터베이스에 접근하는 함수 (insert,update,delete,...)를  제공
 @Dao
-interface DAO {
-
+interface ProfilesDao {
     @Query("SELECT * FROM tb_profiles")
     fun getAll(): List<Profiles>
 

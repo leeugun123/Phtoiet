@@ -7,10 +7,10 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.CoroutineScope
 
-@Database(entities = [Profiles::class], version = 1, exportSchema = false)
+@Database(entities = [Profiles::class], version = 1, exportSchema = false)//스키마 추출X
 abstract class AppDatabase : RoomDatabase() {
-
-    abstract fun ProfilesDao(): DAO
+    //RoomDatabase() 상속
+    abstract fun ProfilesDao(): ProfilesDao
 
     companion object{
 
