@@ -3,9 +3,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tool="http://schemas.android.com/tools"
-    android:background="#ff"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#FFFF"
     android:id="@+id/friendFragment"
     tool:context="org.techtown.phtoiet.Fragment.FriendsFragment">
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Plus"
+        android:id="@+id/mPlusButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="10dp"/>
 
 
 
