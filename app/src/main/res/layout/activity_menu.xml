@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:weightSum="1"
     tools:context=".Menu_Activity">
 
 
@@ -48,56 +49,24 @@
 
     </LinearLayout>
 
-
-    <FrameLayout
-        android:id="@+id/frame"
+    <!-- 프래그먼트들이 보여질 컨테이너 뷰-->
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/my_nav_host"
+        android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="840dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:navGraph="@navigation/nav_graph"
         />
 
-    <LinearLayout
-        android:id="@+id/LinearLayout"
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/my_bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
-        <Button
-            android:id="@+id/button1"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:text="버튼1"
-            android:background="#ffffff"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            />
-
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="137dp"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="#ffffff"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:textSize="20sp"
-            android:text="+"
-            />
-        <Button
-            android:id="@+id/button3"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:layout_weight="1"
-            android:background="#ffffff"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:text="버튼3" />
-
-
-    </LinearLayout>
-
-
-
+        android:layout_height="40dp"
+        app:menu="@menu/bottom_nav_menu"
+        android:background="#fff"
+        />
 
 
 
