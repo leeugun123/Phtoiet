@@ -6,7 +6,7 @@ import androidx.room.*
 @Dao
 interface MealDao {
 
-    @Query("SELECT * FROM meal ORDER BY id ASC")
+    @Query("SELECT * FROM meal")
     fun getAll() : LiveData<List<Meal>>
     //어디든 변경이 생기면 업데이트 가능
 

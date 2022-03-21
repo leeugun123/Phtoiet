@@ -10,18 +10,16 @@ class MealViewModel (application: Application) : AndroidViewModel(application){
     private val meal = reposityory.getAll()
 
     fun getAll() : LiveData<List<Meal>>{
-        return this.meal
+        return meal
     }
 
     fun insert(meal : Meal){
         reposityory.insert(meal)
     }
 
-    fun delte(meal : Meal){
+    fun delete(meal : Meal){
         reposityory.delete(meal)
     }
 
-    fun update(meal : Meal){
-        reposityory.update(meal)
-    }
+
 }

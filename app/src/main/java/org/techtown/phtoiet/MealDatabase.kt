@@ -13,12 +13,12 @@ abstract class MealDatabase() : RoomDatabase(){
     companion object{
         private var INSTANCE : MealDatabase? = null
 
+        @Synchronized
         fun getInstance(context: Context) : MealDatabase?{
             if(INSTANCE == null){
                 synchronized(MealDatabase::class){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                        MealDatabase::class.java,"meal")
-                        .fallbackToDestructiveMigration()
+                        MealDatabase::class.java,"database-name")
                         .build()
                 }
             }

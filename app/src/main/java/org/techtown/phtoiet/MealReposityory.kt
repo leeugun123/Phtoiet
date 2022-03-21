@@ -5,41 +5,25 @@ import androidx.lifecycle.LiveData
 
 class MealReposityory (application: Application){
 
-    private val mealDatabase = MealDatabase.getInstance(application)!!
-    private val mealDao : MealDao = mealDatabase.MealDao()
-    private val meals : LiveData<List<Meal>> = mealDao.getAll()
+    private val mealDao : MealDao
+    private val mealList: LiveData<List<Meal>>
 
-
-    fun getAll() : LiveData<List<Meal>>{
-        return meals
+    init {
+        var db = MealDatabase.getInstance(application)
+        mealDao = db!!.MealDao()
+        mealList = db.MealDao().getAll()
     }
 
     fun insert(meal : Meal){
-        try{
-            val thread = Thread(Runnable {
-                mealDao.insert(meal)
-            })
-            thread.start()
-        }catch (e: Exception){e.printStackTrace()}
+        mealDao.insert((meal))
     }
 
     fun delete(meal : Meal){
-        try {
-            val thread = Thread(Runnable {
-                mealDao.delete(meal)
-            })
-            thread.start()
-        }catch (e: java.lang.Exception){e.printStackTrace()}
+        mealDao.delete(meal)
     }
 
-    fun update(meal : Meal){
-
-        try {
-            val thread = Thread(Runnable {
-                mealDao.update(meal)
-            })
-            thread.start()
-        }catch (e: java.lang.Exception){e.printStackTrace()}
+    fun getAll(): LiveData<List<Meal>>{
+        return mealDao.getAll()
     }
 
 }
