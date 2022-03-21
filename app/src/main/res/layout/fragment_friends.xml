@@ -6,23 +6,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#FFFF"
     android:id="@+id/friendFragment"
+    android:orientation="vertical"
     tool:context="org.techtown.phtoiet.Fragment.FriendsFragment">
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/mRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="650dp"
+        android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     <Button
+        android:id="@+id/mPlusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Plus"
-        android:id="@+id/mPlusButton"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_margin="10dp"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:text="Plus" />
 
 
 
