@@ -26,11 +26,11 @@ class FriendsFragment : Fragment() , OnItemClick {
 
         private val model: MealViewModel by viewModels()
         private lateinit var adapter: MealAdapter
-        private lateinit var mBinding : FragmentFriendsBinding
+        private lateinit var binding : FragmentFriendsBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mBinding = FragmentFriendsBinding.inflate(layoutInflater)
+        binding = FragmentFriendsBinding.inflate(layoutInflater)
 
         initRecyclerView()//리사이클러뷰 초기화
 
@@ -42,20 +42,21 @@ class FriendsFragment : Fragment() , OnItemClick {
 
 
 
-        mBinding.mPlusButton.setOnClickListener{
+        binding.mPlusButton.setOnClickListener{
 
             lifecycleScope.launch(Dispatchers.IO){
-                model.insert(Meal("eeeee","eeeee","eeeeee"))
+                model.insert(Meal("https://cdn.pixabay.com/photo/2021/08/03/07/03/orange-6518675_960_720.jpg","오렌지","10시 30분","345"))
             }//메인 쓰레드에서 실행하면 안되므로 코루틴 사용??
+
+        //editext로 내용을 받아 입력 구현하기
 
         }//데이터 추가
 
     }
 
     private fun initRecyclerView(){
-        mBinding?.mRecyclerView?.layoutManager = LinearLayoutManager(activity)
         adapter = MealAdapter(this)
-        mBinding?.mRecyclerView?.adapter = adapter
+        binding.mRecyclerView.adapter = adapter
     }
 
 
@@ -64,8 +65,7 @@ class FriendsFragment : Fragment() , OnItemClick {
     }
 
     override fun onCreateView(inflater: LayoutInflater,container: ViewGroup?,savedInstanceState: Bundle?) : View?{
-        val binding = FragmentFriendsBinding.inflate(inflater,container,false)
-        return binding.root
+        return binding?.root
     }
 
     override fun deleteMeal(meal: Meal) {

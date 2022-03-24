@@ -9,7 +9,10 @@ import androidx.room.PrimaryKey
 //대상에 대한 정보 뿐만 아니라 동작,기능,절차등을 포함
 @Entity//어노테이션
 class Meal (
-    var mealName : String,//음식이름
+
+    val mealPhoto : String, //음식 사진
+
+    var mealName : String,//음식 이름
 
     var mealTime : String,//음식 먹은 시간
 
