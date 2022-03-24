@@ -1,6 +1,7 @@
 package org.techtown.phtoiet.Fragment
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -40,9 +41,8 @@ class FriendsFragment : Fragment() , OnItemClick {
         })//observer를 붙여서 데이터가 변경되면, adapter에게 넘기고 새로고침
 
 
-        mBinding?.mPlusButton?.setOnClickListener{
 
-            Toast.makeText(activity, "플래그먼트에서도 Toast가 됩니다", Toast.LENGTH_LONG).show()
+        mBinding.mPlusButton.setOnClickListener{
 
             lifecycleScope.launch(Dispatchers.IO){
                 model.insert(Meal("eeeee","eeeee","eeeeee"))
