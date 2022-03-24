@@ -6,19 +6,19 @@ import androidx.lifecycle.LiveData
 
 class MealViewModel (application: Application) : AndroidViewModel(application){
 
-    private val reposityory = MealReposityory(application)
-    private val meal = reposityory.getAll()
+    private val repository = MealReposityory(application)
+    private val items = repository.getAll()
 
     fun getAll() : LiveData<List<Meal>>{
-        return meal
+        return items
     }
 
     fun insert(meal : Meal){
-        reposityory.insert(meal)
+        repository.insert(meal)
     }
 
     fun delete(meal : Meal){
-        reposityory.delete(meal)
+        repository.delete(meal)
     }
 
 

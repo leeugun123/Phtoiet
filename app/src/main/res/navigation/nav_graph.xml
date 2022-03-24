@@ -21,7 +21,7 @@
     <fragment
         android:id="@+id/musicFragment"
         android:name="org.techtown.phtoiet.Fragment.MusicFragment"
-        android:label="MusicFragment"
+        android:label="musicFragment"
         tools:layout="@layout/fragment_music"/>
 
 </navigation>

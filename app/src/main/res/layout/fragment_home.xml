@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tool="http://schemas.android.com/tools"
-    android:background="#2196F3"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/homeFragment"
     tool:context="org.techtown.phtoiet.Fragment.HomeFragment">
 
-    <TextView
-        android:id="@+id/home_Fragment_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="      홈 프래그먼트"
-        android:textSize="50sp"
-        android:layout_centerInParent="true"
-        />
 
-</RelativeLayout>
+    <com.applikeysolutions.cosmocalendar.view.CalendarView
+        android:id="@+id/calendar_view"
+        android:layout_width="match_parent"
+        android:layout_height="413dp"
+        app:connectedDayIconPosition="top"
+        app:currentDayTextColor="#f79256"
+        app:firstDayOfTheWeek="sunday"
+        app:orientation="horizontal"
+        app:selectedDayBackgroundColor="#FFEACA"
+        app:selectedDayBackgroundEndColor="#f79256"
+        app:selectedDayBackgroundStartColor="#f79256"
+        app:selectedDayTextColor="#FFFFFF"
+        app:selectionType="range"
+        app:weekendDayTextColor="#ef4550" />
+
+
+</LinearLayout>

@@ -1,5 +1,6 @@
 package org.techtown.phtoiet
 
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.MealViewHolder>() {
 
+    private val mCallback = listener
     private val items = ArrayList<Meal>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealViewHolder {
@@ -19,6 +21,7 @@ class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.Meal
     override fun onBindViewHolder(holder: MealViewHolder, position: Int) {
         holder.bind(items[position])
     }
+
 
     fun setList(meal : List<Meal>){
         items.clear()

@@ -5,8 +5,10 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [Meal::class], version = 1)
+//ROOM DataBase의 역할을 해줌
+@Database(entities = [Meal::class], version = 1, exportSchema = false)
 abstract class MealDatabase() : RoomDatabase(){
+    //RoomDatabase() 상속
 
     abstract fun MealDao() : MealDao
 
@@ -18,7 +20,7 @@ abstract class MealDatabase() : RoomDatabase(){
             if(INSTANCE == null){
                 synchronized(MealDatabase::class){
                     INSTANCE = Room.databaseBuilder(context.applicationContext,
-                        MealDatabase::class.java,"database-name")
+                        MealDatabase::class.java,"meal-database")
                         .build()
                 }
             }
