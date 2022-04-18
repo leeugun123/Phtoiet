@@ -58,7 +58,18 @@ class FriendsFragment : Fragment() , OnItemClick {
         binding.mPlusButton.setOnClickListener{
 
             lifecycleScope.launch(Dispatchers.IO){
-                model.insert(Meal("https://cdn.pixabay.com/photo/2021/08/03/07/03/orange-6518675_960_720.jpg","오렌지","10시 30분","345"))
+
+                activity?.let {
+
+                    val intent = Intent(context,Upload_meal::class.java)
+                    startActivity(intent)
+
+
+                }//Upload_mill로 화면전환 (설정할 수 있는 화면으로 이동 가능)
+
+
+
+                //model.insert(Meal("https://cdn.pixabay.com/photo/2021/08/03/07/03/orange-6518675_960_720.jpg","오렌지","10시 30분","345"))
             }//메인 쓰레드에서 실행하면 안되므로 코루틴 사용??
 
         //editext로 내용을 받아 입력 구현하기
