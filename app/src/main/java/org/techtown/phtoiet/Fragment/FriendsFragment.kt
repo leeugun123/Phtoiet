@@ -1,6 +1,8 @@
 package org.techtown.phtoiet.Fragment
 
 import android.app.Activity.RESULT_OK
+import android.app.AlertDialog
+import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
@@ -24,9 +26,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_friends.*
 import kotlinx.android.synthetic.main.recycler_view_test.view.*
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.techtown.phtoiet.*
 import org.techtown.phtoiet.databinding.ActivityMenuBinding
+import org.techtown.phtoiet.databinding.AlertdialogEdittextBinding
 import org.techtown.phtoiet.databinding.FragmentFriendsBinding
 import java.io.File
 import java.io.IOException
@@ -48,8 +52,9 @@ class FriendsFragment : Fragment() , OnItemClick {
         binding = FragmentFriendsBinding.inflate(layoutInflater)
         //데이터 바인딩
 
-        initRecyclerView()//리사이클러뷰 초기화
+        //Log.d("TAG","버튼 눌렸다.!!")
 
+        initRecyclerView()//리사이클러뷰 초기화
 
 
         model.getAll().observe(this, Observer {
@@ -59,9 +64,46 @@ class FriendsFragment : Fragment() , OnItemClick {
 
         binding.mPlusButton.setOnClickListener{
 
-            model.insert(Meal("https://cdn.pixabay.com/photo/2021/08/03/07/03/orange-6518675_960_720.jpg","오렌지","10시 30분","345"))
+            val builder = AlertDialog.Builder(activity)
+            val builderItem = AlertdialogEdittextBinding.inflate(layoutInflater)
+
+            val name_editText = builderItem.fodName
+            val time_editText = builderItem.fodTime
+            val cal_editText = builderItem.fodCal
+
+            var fd_name = ""
+            var fd_time = ""
+            var fd_cal = ""
+
+            with(builder){
+                setView(builderItem.root)
+
+                setPositiveButton("등록"){
+
+                        dialogInterface: DialogInterface, i: Int ->
+
+                    fd_name = name_editText.text.toString()
+                    fd_time = time_editText.text.toString()
+                    fd_cal = cal_editText.text.toString()
+
+                    lifecycleScope.launch(Dispatchers.IO){
+
+                        //delay(400)
+                        model.insert(Meal(fd_name,fd_time,fd_cal+" Kcal"))
+
+                    }
+                }
+                    .setNegativeButton("취소"){
+                            dialogInterface: DialogInterface, i: Int ->
+                    }
+                    .show()
+            }
 
 
+
+
+
+            //메인 쓰레드에서 접근하면 오류가 날 수 있다... 반드시 코루틴 사용
 
         //editext로 내용을 받아 입력 구현하기
 

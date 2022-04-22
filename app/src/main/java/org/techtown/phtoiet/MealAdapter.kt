@@ -36,14 +36,13 @@ class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.Meal
 
     inner class MealViewHolder(private val binding : RecyclerViewTestBinding):RecyclerView.ViewHolder(binding.root){
 
-        private val meal_photo = itemView.findViewById<ImageView>(R.id.food_image)//음식 사진
+
         private val meal_name = itemView.findViewById<TextView>(R.id.meal_name)//음식 이름
         private val meal_time = itemView.findViewById<TextView>(R.id.time)//먹은 시간
         private val meal_calories = itemView.findViewById<TextView>(R.id.calories)//칼로리
 
         fun bind(meal: Meal){
 
-            Glide.with(binding.root).load(meal.mealPhoto).into(meal_photo)
             //사진 붙여넣기 잘 안된다..
 
             meal_name.text = meal.mealName

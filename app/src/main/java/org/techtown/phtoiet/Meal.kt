@@ -10,8 +10,6 @@ import androidx.room.PrimaryKey
 @Entity//어노테이션
 class Meal (
 
-    val mealPhoto : String, //음식 사진
-
     var mealName : String,//음식 이름
 
     var mealTime : String,//음식 먹은 시간

@@ -5,8 +5,9 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-//ROOM DataBase의 역할을 해줌         //데이터 속성 추가로 인해 version 1 -> version 2로 변경
-@Database(entities = [Meal::class], version = 2, exportSchema = false)
+//ROOM DataBase의 역할을 해줌         //사진 속성 삭제로 인해 version 2 -> version 3로 변경
+
+@Database(entities = [Meal::class], version = 3, exportSchema = false)
 abstract class MealDatabase() : RoomDatabase(){
     //RoomDatabase() 상속
 
