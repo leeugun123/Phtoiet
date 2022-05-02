@@ -39,6 +39,7 @@ class MainActivity : AppCompatActivity() {
             }//이미 기존 계정으로 로그인 했을 경우,
         }
 
+
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 when {
@@ -79,6 +80,8 @@ class MainActivity : AppCompatActivity() {
                 finish()
             }
         }
+
+
 
 
         val kakao_login_button = findViewById<ImageButton>(R.id.login_button) // 로그인 버튼

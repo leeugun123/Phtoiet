@@ -23,6 +23,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_friends.*
 import kotlinx.android.synthetic.main.recycler_view_test.view.*
 import kotlinx.coroutines.Dispatchers
@@ -36,7 +37,9 @@ import java.io.File
 import java.io.IOException
 import java.text.SimpleDateFormat
 import java.util.*
+import java.lang.Override as Override
 
+private const val REQUEST_CODE_FOR_IMAGE_CAPTURE = 100
 
 //오늘의 일정 확인 하는 Fragment
 class FriendsFragment : Fragment() , OnItemClick {
@@ -44,7 +47,10 @@ class FriendsFragment : Fragment() , OnItemClick {
     private val model: MealViewModel by viewModels()
     private lateinit var adapter: MealAdapter
     private lateinit var binding : FragmentFriendsBinding
+    private lateinit var photoFile : File
 
+    val builder = AlertDialog.Builder(activity)
+    val builderItem = AlertdialogEdittextBinding.inflate(layoutInflater)
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -56,7 +62,6 @@ class FriendsFragment : Fragment() , OnItemClick {
 
         initRecyclerView()//리사이클러뷰 초기화
 
-
         model.getAll().observe(this, Observer {
             adapter.setList(it)
             adapter.notifyDataSetChanged()
@@ -64,8 +69,29 @@ class FriendsFragment : Fragment() , OnItemClick {
 
         binding.mPlusButton.setOnClickListener{
 
-            val builder = AlertDialog.Builder(activity)
-            val builderItem = AlertdialogEdittextBinding.inflate(layoutInflater)
+            val dialog_button = builderItem.dialogButton
+
+            val Fp_ImageView = builderItem.FPDialog
+
+            dialog_button.setOnClickListener{
+
+                val Intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+
+                if(context?.let { it1 -> Intent.resolveActivity(it1.packageManager) } != null){
+
+                    val dir = activity?.externalCacheDir
+                    //외부 Cache dir를 사용
+
+                    val file = File.createTempFile("photo_",".jpg",dir)
+                    val uri = activity?.let { it1 -> FileProvider.getUriForFile(it1,"packageName.provider",file) }
+
+                    Intent.putExtra(MediaStore.EXTRA_OUTPUT,uri)
+                    startActivityForResult(Intent, REQUEST_CODE_FOR_IMAGE_CAPTURE)
+                    photoFile = file
+
+
+                }
+            }//사진 찍기 버튼 누르기
 
             val name_editText = builderItem.fodName
             val time_editText = builderItem.fodTime
@@ -109,6 +135,24 @@ class FriendsFragment : Fragment() , OnItemClick {
 
         }//데이터 추가
 
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        when(requestCode){
+            REQUEST_CODE_FOR_IMAGE_CAPTURE ->{
+                if(resultCode == RESULT_OK){
+                    BitmapFactory.decodeFile(photoFile.absolutePath)?.let {
+                        builderItem.FPDialog.setImageBitmap(it)
+                    }
+                    activity?.let { Glide.with(it).load(photoFile).into(builderItem.FPDialog) }
+                }
+                else{
+                    Toast.makeText(activity,"취소 되었습니다.",Toast.LENGTH_LONG).show()
+                }
+            }
+        }
     }
 
     private fun initRecyclerView(){
