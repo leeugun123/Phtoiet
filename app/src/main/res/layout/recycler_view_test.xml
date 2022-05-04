@@ -5,28 +5,27 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
-    <ImageView
-        android:id="@+id/FP"
-        android:layout_width="match_parent"
-        android:layout_height="450dp"
-        />
-
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textStyle="bold"
+            android:text="음식 이름"
+            android:textColor="#000000"
+            android:textSize="40sp"/>
 
         <TextView
             android:id="@+id/meal_name"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
+            android:text="오이"
             android:textStyle="bold"
-            android:text="음식 이름"
-            android:textSize="40sp"/>
+            android:textSize="80sp"/>
 
 
     </LinearLayout>
@@ -36,17 +35,24 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="먹은 시간"
+            android:textColor="#000000"
+            android:textSize="40sp"/>
 
 
         <TextView
             android:id="@+id/time"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
             android:textStyle="bold"
             android:text="먹은 시간"
-            android:textSize="40sp"/>
+            android:textSize="80sp"/>
 
 
     </LinearLayout>
@@ -56,36 +62,36 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textStyle="bold"
+            android:text="칼로리"
+            android:textColor="#000000"
+            android:textSize="40sp"/>
 
         <TextView
             android:id="@+id/calories"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:gravity="center_horizontal"
             android:textStyle="bold"
             android:text="칼로리"
-            android:textSize="40sp"/>
+
+            android:textSize="80sp"/>
 
 
     </LinearLayout>
 
-
-<LinearLayout
+<Button
+    android:id="@+id/deleteButton"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-
-    <Button
-        android:id="@+id/delete_button"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="삭제"
-        android:layout_marginLeft="150dp"
-        android:textStyle="bold"/>
-
-
-</LinearLayout>
+    android:text="삭제"
+    android:textStyle="bold"
+    android:textSize="20sp"
+    />
 
 
 

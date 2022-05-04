@@ -49,9 +49,12 @@ class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.Meal
             meal_time.text = meal.mealTime
             meal_calories.text = meal.calories
 
+
+
             binding.deleteButton.setOnClickListener{
                 mCallback.deleteMeal(meal)
             }//클릭시 데이터 삭제
+
 
         }
     }
