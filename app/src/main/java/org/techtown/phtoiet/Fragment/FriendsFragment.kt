@@ -11,6 +11,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
+import androidx.core.app.ActivityCompat
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -24,10 +25,7 @@ import com.gun0912.tedpermission.TedPermission
 import kotlinx.android.synthetic.main.fragment_friends.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import org.techtown.phtoiet.Meal
-import org.techtown.phtoiet.MealAdapter
-import org.techtown.phtoiet.MealViewModel
-import org.techtown.phtoiet.OnItemClick
+import org.techtown.phtoiet.*
 import org.techtown.phtoiet.databinding.AlertdialogEdittextBinding
 import org.techtown.phtoiet.databinding.FragmentFriendsBinding
 import java.io.File
@@ -55,10 +53,13 @@ class FriendsFragment : Fragment(), OnItemClick {
 
         binding.mPlusButton.setOnClickListener{
 
-            lifecycleScope.launch(Dispatchers.IO){
-                model.insert(Meal("dsdsd","dddddd","234"+" Kcal"))
-            }//코루틴으로 ViewModel 접근
-            //main thread에서 접근하는 것이 아닌 코루틴을 이용하여 DB에 접근한다.
+
+            activity.let {
+                val Intent = Intent(context,Registration_Acitivity::class.java)
+                startActivity(Intent)
+            }
+
+
 
         }//데이터 추가
 

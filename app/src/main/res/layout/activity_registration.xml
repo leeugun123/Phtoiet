@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Registration_Acitivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="식단 등록"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="먹은 음식"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/eat_food"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="먹은 시간"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/eat_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="칼로리"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        />
+
+    <EditText
+        android:id="@+id/calories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+
+
+    <Button
+        android:id="@+id/ADD_Button"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:text="등록"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp" />
+
+
+
+</LinearLayout>

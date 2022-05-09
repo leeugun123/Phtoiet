@@ -28,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Phtoiet">
         <activity
+            android:name=".Registration_Acitivity"
+            android:exported="false" />
+        <activity
             android:name=".Menu_Activity"
             android:exported="true" />
         <activity
@@ -42,18 +45,14 @@
         </activity>
 
         <provider
-            android:authorities="${applicationId}.provider"
             android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
             android:exported="false"
             android:grantUriPermissions="true">
-
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
-
+                android:resource="@xml/provider_paths" />
         </provider>
-
-
 
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -69,7 +68,6 @@
                     android:scheme="kakaob9e72f7cce0b5bd40c8ed8da1bdcc3a9" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>
