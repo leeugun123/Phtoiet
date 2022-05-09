@@ -7,13 +7,30 @@
     android:orientation="vertical"
     tools:context=".Registration_Acitivity">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="식단 등록"
-        android:textSize="60sp"
+        android:textSize="40sp"
         android:textStyle="bold"
         android:gravity="center"
+        />
+
+
+    <ImageView
+        android:id="@+id/food_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        />
+
+    <Button
+        android:id="@+id/take_picture"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="사진찍기"
+        android:textSize="20sp"
+        android:textStyle="bold"
         />
 
     <TextView
@@ -60,12 +77,10 @@
         />
 
 
-
-
     <Button
         android:id="@+id/ADD_Button"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="70dp"
         android:text="등록"
         android:textSize="30sp"
         android:textStyle="bold"

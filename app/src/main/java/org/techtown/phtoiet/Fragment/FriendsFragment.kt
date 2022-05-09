@@ -26,7 +26,6 @@ import kotlinx.android.synthetic.main.fragment_friends.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import org.techtown.phtoiet.*
-import org.techtown.phtoiet.databinding.AlertdialogEdittextBinding
 import org.techtown.phtoiet.databinding.FragmentFriendsBinding
 import java.io.File
 
