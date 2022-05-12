@@ -8,19 +8,19 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="org.techtown.phtoiet.Fragment.HomeFragment"
+        android:name="org.techtown.phtoiet.Fragment.Calendar.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home"/>
 
     <fragment
         android:id="@+id/friendsFragment"
-        android:name="org.techtown.phtoiet.Fragment.FriendsFragment"
+        android:name="org.techtown.phtoiet.Fragment.List.FriendsFragment"
         android:label="fragment_friends"
         tools:layout="@layout/fragment_friends" />
 
     <fragment
         android:id="@+id/musicFragment"
-        android:name="org.techtown.phtoiet.Fragment.MusicFragment"
+        android:name="org.techtown.phtoiet.Fragment.Search.MusicFragment"
         android:label="musicFragment"
         tools:layout="@layout/fragment_music"/>
 

@@ -13,6 +13,8 @@ import com.gun0912.tedpermission.PermissionListener
 import com.gun0912.tedpermission.TedPermission
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.techtown.phtoiet.MealViewModel.MealAdapter
+import org.techtown.phtoiet.MealViewModel.MealViewModel
 import org.techtown.phtoiet.databinding.ActivityRegistrationBinding
 import java.io.File
 

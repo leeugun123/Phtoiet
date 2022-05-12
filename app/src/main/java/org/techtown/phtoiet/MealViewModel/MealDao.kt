@@ -1,7 +1,8 @@
-package org.techtown.phtoiet
+package org.techtown
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
+import org.techtown.phtoiet.Meal
 
 @Dao
 interface MealDao {

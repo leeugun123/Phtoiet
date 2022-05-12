@@ -1,8 +1,9 @@
-package org.techtown.phtoiet
+package org.techtown.phtoiet.MealViewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
+import org.techtown.phtoiet.Meal
 
 class MealViewModel (application: Application) : AndroidViewModel(application){
 

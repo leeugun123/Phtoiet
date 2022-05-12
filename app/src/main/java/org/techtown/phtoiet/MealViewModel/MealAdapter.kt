@@ -1,4 +1,4 @@
-package org.techtown.phtoiet
+package org.techtown
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -6,6 +6,9 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import org.techtown.phtoiet.Meal
+import org.techtown.phtoiet.MealViewModel.OnItemClick
+import org.techtown.phtoiet.R
 import org.techtown.phtoiet.databinding.RecyclerViewTestBinding
 
 class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.MealViewHolder>() {

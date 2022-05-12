@@ -1,7 +1,11 @@
-package org.techtown.phtoiet
+package org.techtown.phtoiet.MealViewModel
 
 import android.app.Application
 import androidx.lifecycle.LiveData
+import org.techtown.MealDao
+import org.techtown.MealDatabase
+import org.techtown.phtoiet.Meal
+
 
 ///MMVM패턴의 Model(Repository)을 하는 역할
 class MealReposityory (application: Application){
