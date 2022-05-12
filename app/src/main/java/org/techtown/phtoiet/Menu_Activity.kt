@@ -32,6 +32,7 @@ class Menu_Activity : AppCompatActivity() {
 
         setContentView(mBinding.root)
 
+        /*
         val nickname = findViewById<TextView>(R.id.nickname)//닉네임
 
         UserApiClient.instance.me { user, error ->
@@ -49,6 +50,8 @@ class Menu_Activity : AppCompatActivity() {
         val formatted = current.format(formatter)
 
         Today_date.setText(formatted)//오늘 날짜 가져오기
+
+    */
 
         //네비게이션을 담는 호스트
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.my_nav_host) as NavHostFragment

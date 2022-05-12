@@ -9,40 +9,7 @@
     tools:context=".Menu_Activity">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        >
 
-        <TextView
-            android:id="@+id/Today_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#000000"
-            android:textStyle="bold"
-            android:text="오늘 날짜"
-            android:textSize="25sp"
-            />
-
-        <ImageView
-            android:gravity="right"
-            android:id="@+id/profile"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            />
-
-        <TextView
-            android:gravity="right"
-            android:id="@+id/nickname"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="25sp"
-            android:textColor="#000000"
-            />
-
-    </LinearLayout>
 
     <!-- 프래그먼트들이 보여질 컨테이너 뷰-->
     <androidx.fragment.app.FragmentContainerView
