@@ -36,7 +36,7 @@ class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.Meal
 
     inner class MealViewHolder(private val binding : RecyclerViewTestBinding):RecyclerView.ViewHolder(binding.root){
 
-        private val food_image = itemView.findViewById<ImageView>(R.id.food_image)
+        private val food_image = itemView.findViewById<ImageView>(R.id.food_image)//음식 사진
         private val meal_name = itemView.findViewById<TextView>(R.id.meal_name)//음식 이름
         private val meal_time = itemView.findViewById<TextView>(R.id.time)//먹은 시간
         private val meal_calories = itemView.findViewById<TextView>(R.id.calories)//칼로리
@@ -44,7 +44,6 @@ class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.Meal
         fun bind(meal: Meal){
 
             //사진 붙여넣기 잘 안된다..
-
             meal_name.text = meal.mealName
             meal_time.text = meal.mealTime
             meal_calories.text = meal.calories
@@ -53,7 +52,6 @@ class MealAdapter(listener: OnItemClick) : RecyclerView.Adapter<MealAdapter.Meal
             binding.deleteButton.setOnClickListener{
                 mCallback.deleteMeal(meal)
             }//클릭시 데이터 삭제
-
 
         }
     }

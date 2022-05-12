@@ -33,6 +33,9 @@ class Registration_Acitivity : AppCompatActivity() {
 
         setPermission()//권한 허용 메소드
 
+
+       var Meal_uri = ""
+
         mBinding.takePicture.setOnClickListener{
 
             val intent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
@@ -42,6 +45,8 @@ class Registration_Acitivity : AppCompatActivity() {
                 val dir = externalCacheDir
                 val file = File.createTempFile("photo_",".jpg",dir)
                 val uri = FileProvider.getUriForFile(this,"$packageName.provider",file)
+
+                Meal_uri = uri.toString()
 
                 intent.putExtra(MediaStore.EXTRA_OUTPUT,uri)
                 startActivityForResult(intent, REQUEST_CODE_FOR_IMAGE_CAPTRUE)
@@ -58,7 +63,7 @@ class Registration_Acitivity : AppCompatActivity() {
             val calories = mBinding.calories.text.toString()
 
            lifecycleScope.launch(Dispatchers.IO){
-               model.insert(Meal(R.drawable.noddle,mealName,mealTime,calories))
+               model.insert(Meal(Meal_uri,mealName,mealTime,calories))//externalCacheDir로부터 image를 가져온다.
            }//코루틴으로 ViewModel 접근
            //main thread에서 접근하는 것이 아닌 코루틴을 이용하여 DB에 접근한다.(주의사항)
 
@@ -108,7 +113,7 @@ class Registration_Acitivity : AppCompatActivity() {
             .setPermissions(android.Manifest.permission.WRITE_EXTERNAL_STORAGE,android.Manifest.permission.CAMERA)
             .check()
 
-    }
+    }//권한 허용 메소드
 
 
 }

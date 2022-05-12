@@ -1,6 +1,5 @@
 package org.techtown.phtoiet
 
-import android.widget.ImageView
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -10,7 +9,7 @@ import androidx.room.PrimaryKey
 @Entity//어노테이션
 class Meal(
 
-    var profile: Int,//음식 사진
+    var profile: String,//음식 사진
 
     var mealName: String,//음식 이름
 
